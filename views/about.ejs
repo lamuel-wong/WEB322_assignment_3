@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <title>About</title>
+</head>
+
+<body>
+  <!-- Include navbar -->
+  <%- include('partials/navbar', { page: '/about' }) %>
+
+  <!-- Responsive grid system containing 2 columns with information about me -->
+  <div class="container mx-auto">
+    <div class="hero bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">About</h1>
+          <p class="py-6">
+            Learn more about the person behind the Lego Collection.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
+      <div>
+        <img src="\images\author_cat.jpg" alt="Author's Cat" />
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold">A Little About Myself</h2>
+        <p class="mt-4">
+          I'm Lamuel Wong, a Computer Programming & Analysis student at Seneca
+          Polytechnic that loves my cuddly cat best friend. I'm trying to be
+          more healthy, get better at volleyball, and avoid gaming until the
+          late night too much.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

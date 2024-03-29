@@ -1,12 +1,14 @@
 /********************************************************************************
- *  WEB322 – Assignment 03
+ *  WEB322 – Assignment 04
  *
  *  I declare that this assignment is my own work in accordance with Seneca's
  *  Academic Integrity Policy:
  *
  *  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
  *
- *  Name: Lamuel Tong Vargas Wong Student ID: 171959216 Date: 2024-03-18
+ *  Name: Lamuel Tong Vargas Wong Student ID: 171959216 Date: 2024-03-29
+ *
+ *  Published URL: ___________________________________________________________
  *
  ********************************************************************************/
 
@@ -24,6 +26,12 @@ const HTTP_PORT = process.env.PORT || 8080;
 // Public files
 app.use(express.static("public"));
 
+// Set the view engine to EJS
+app.set("view engine", "ejs");
+
+// Set the views directory
+app.set("views", path.join(__dirname, "views"));
+
 // Ensure that the "sets" array has been successfully built within our "legoSets" module before the server starts
 legoData
   .initialize()
@@ -35,27 +43,28 @@ legoData
 
     // Route for home page
     app.get("/", (req, res) => {
-      res.sendFile(path.join(__dirname, "views", "home.html"));
+      res.render("home");
     });
 
     // Route for about page
     app.get("/about", (req, res) => {
-      res.sendFile(path.join(__dirname, "views", "about.html"));
+      res.render("about");
     });
 
     // Route for getting lego sets
     app.get("/lego/sets", async (req, res) => {
       try {
+        // Render sets.ejs view with the legoSets data stored in a "sets" variable
         const theme = req.query.theme;
+        let sets;
         if (theme) {
-          const themedSets = await legoData.getSetsByTheme(theme);
-          res.json(themedSets);
+          sets = await legoData.getSetsByTheme(theme);
         } else {
-          const sets = await legoData.getAllSets();
-          res.json(sets);
+          sets = await legoData.getAllSets();
         }
+        res.render("sets", { sets: sets });
       } catch (error) {
-        res.status(404).send(error);
+        res.status(404).render("404", { message: error });
       }
     });
 
@@ -63,15 +72,19 @@ legoData
     app.get("/lego/sets/:setNum", async (req, res) => {
       try {
         const set = await legoData.getSetByNum(req.params.setNum);
-        set ? res.json(set) : res.status(404).send("Set not found");
+        if (set) {
+          res.render("set", { set: set });
+        } else {
+          res.status(404).send("Set not found");
+        }
       } catch (error) {
-        res.status(404).send(error.message);
+        res.status(404).render("404", { message: error });
       }
     });
 
     // Custom 404 error
     app.use((req, res) => {
-      res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+      res.status(404).render("404", {message: "I'm sorry, we're unable to find what you're looking for..."});
     });
   })
   .catch((error) => {

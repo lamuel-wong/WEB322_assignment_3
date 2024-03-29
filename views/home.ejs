@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <title>Lego Collection</title>
+</head>
+
+<body>
+  <!-- Include navbar -->
+  <%- include('partials/navbar', { page: '/' }) %>
+
+  <!-- Container for content using grid system -->
+  <div class="container mx-auto">
+    <!-- Hero component -->
+    <div class="hero min-h-screen bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Welcome to Lego Collection</h1>
+          <p class="py-6">
+            Explore the vast world of Lego sets and discover your next build!
+          </p>
+          <a href="/lego/sets" class="btn btn-primary">Explore Sets</a>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <!-- Responsive grid system containing cards that feature an item from lego set -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Card 1 -->
+      <div class="card bg-base-100 shadow-xl">
+        <figure>
+          <img src="https://cdn.rebrickable.com/media/sets/001-1.jpg" alt="Gears" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Gears</h2>
+          <p>
+            This set was released in America (USA/CAN) by Samsonite in 1965.
+            It was re-released in 1969 as an educational set (322-4). It was
+            never released in Europe.
+          </p>
+          <div class="card-actions justify-end">
+            <a href="/lego/sets/001-1" class="btn btn-primary">View Set</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="card bg-base-100 shadow-xl">
+        <figure>
+          <img src="https://cdn.rebrickable.com/media/sets/010423-1.jpg" alt="The Majestic Horse" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">The Majestic Horse</h2>
+          <p>
+            Designed by previous 2017 Lego Masters UK winners Nathan Dias and
+            Steve Guinness. Given to select members of the Recognised Lego Fan
+            Media group for an April fools prank in 2023, only around 10 are
+            known to exist. Although pictures show box art for this set, it
+            was received in a clear plastic bag in a standard box. Building
+            instructions were locked with a password and unprintable so will
+            likely never be available to the public. Some sets were received
+            with 4 red 25269 and some had 4 dark red 25269.
+          </p>
+          <div class="card-actions justify-end">
+            <a href="/lego/sets/010423-1" class="btn btn-primary">View Set</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="card bg-base-100 shadow-xl">
+        <figure>
+          <img src="https://cdn.rebrickable.com/media/sets/0241187567-1.jpg" alt="Ninjago: Build Your Own Adventure" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Ninjago: Build Your Own Adventure</h2>
+          <p>
+            Written by Scarlett O'Hara<br />
+            Hardcover: 80 pages<br />
+            Publisher: Dorling Kindersley (August 2015)<br />
+            Language: English<br />
+            ISBN-10: 0241187567<br />
+            ISBN-13: 9780241187562<br />
+            <br />
+            Parts supplied in a polybag numbered 11909
+          </p>
+          <div class="card-actions justify-end">
+            <a href="/lego/sets/0241187567-1" class="btn btn-primary">View Set</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
