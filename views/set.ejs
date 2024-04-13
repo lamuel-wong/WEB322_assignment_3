@@ -36,10 +36,13 @@
       <!-- Second column data -->
       <div>
         <p><strong>Year:</strong> <%= set.year %></p>
-        <p><strong>Theme:</strong> <%= set.theme %></p>
+        <p><strong>Theme:</strong> <%= set.Theme.name %></p>
         <p><strong>Number of Parts:</strong> <%= set.num_parts %></p>
         <br>
         <div id="quote">Loading quote...</div>
+        <br>
+        <!-- Edit button -->
+        <a href="/lego/editSet/<%= set.set_num %>" class="btn btn-success">Edit Set</a>
         <br>
         <!-- Back button -->
         <a href="#" onclick="history.back(); return false;" class="btn btn-primary">Return</a>
